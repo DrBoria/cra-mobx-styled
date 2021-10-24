@@ -1,8 +1,8 @@
-import { ICustomHeaders } from './fetch';
+import { TCustomHeaders } from './fetch';
 
-export const headers: ICustomHeaders = new Headers();
+export const headers: TCustomHeaders = new Headers();
 
-export default (): ICustomHeaders => {
+export default (): TCustomHeaders => {
   headers.set('Accept', 'application/json');
   headers.set('Content-Type', 'application/json');
   return headers;

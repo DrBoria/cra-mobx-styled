@@ -1,9 +1,10 @@
-import React from 'react';
-import { useObserver } from 'mobx-react';
-
-import TodoList from 'sections/TodoList';
+import React, { FC } from 'react';
+import { observer } from 'mobx-react';
 import { useStore } from 'rootStore';
+
 import Header from 'sections/Header';
+import Intro from 'sections/Intro';
+import { TMessageTypes } from 'models/ui';
 
 const menuFields = [
   {
@@ -28,37 +29,24 @@ const menuFields = [
   },
 ];
 
-const TeacherSubmit = () => {
-  const { taskStore } = useStore();
-  return useObserver(() => (
+const DemoPage: FC<any> = () => {
+  const { UiStore, DemoStore } = useStore();
+  return (
     <>
       <Header menu={menuFields} />
+      <Intro
+        submit={() => DemoStore.fetchDemoLogin(UiStore, null)}
+        success={() =>
+          UiStore.showHideMessage({
+            type: TMessageTypes.success,
+            text: 'Success',
+          })
+        }
+      />
 
-      <div className="App">
-        <div>
-          <h3 className="subtitle">Make a new To do</h3>
-          <form
-            onSubmit={(e) => {
-              e.preventDefault();
-              taskStore.add({
-                name: 'name',
-                details: 'value',
-              });
-            }}
-          >
-            <button className="btn btn-info mb-2" type="submit">
-              Add
-            </button>
-          </form>
-        </div>
-        <div className="card-container">
-          {taskStore.Todo.map((todo: any, i: number) => (
-            <TodoList todo={todo} key={i} />
-          ))}
-        </div>
-      </div>
+      {UiStore.loading && 'loading...'}
     </>
-  ));
+  );
 };
 
-export default TeacherSubmit;
+export default observer(DemoPage);

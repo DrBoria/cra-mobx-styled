@@ -5,6 +5,10 @@ export default {
     element: '#f6f6f6',
     elementHover: '#ebebeb',
     label: '#aaaaaa',
+    error: '#f4c7c7',
+    warning: '#ffe2b7',
+    info: '#b8e7fb',
+    success: '#cce8cd',
   },
 
   // Typography colors

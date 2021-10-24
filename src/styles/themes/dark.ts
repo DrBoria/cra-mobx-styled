@@ -5,6 +5,10 @@ export default {
     element: 'linear-gradient(87.1deg, #6e3ed2 0%, #9e8ffb 100%)',
     elementHover: '#ebebeb',
     label: '#aaaaaa',
+    error: '#160b0b',
+    warning: '#191207',
+    info: '#071318',
+    success: '#0c130d',
   },
 
   // Typography colors

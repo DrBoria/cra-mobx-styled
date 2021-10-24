@@ -1,18 +1,18 @@
-interface IFetchResponse<T = any> extends Response {
+type TFetchResponse<T = any> = {
   json<P = T>(): Promise<P>;
-}
+} & Response;
 
-export interface IRequestErrors extends Error {
-  response?: IFetchResponse;
-}
+export type TRequestErrors = {
+  response?: TFetchResponse;
+} & Error;
 
-export interface ICustomHeaders extends Headers {
+export type TCustomHeaders = {
   clientid?: string;
   entitytype?: string;
   token?: string;
-}
+} & Headers;
 
-const checkStatus = async (response: IFetchResponse): Promise<IFetchResponse> => {
+const checkStatus = async (response: TFetchResponse): Promise<TFetchResponse> => {
   if (response.ok) {
     return response;
   }
@@ -23,10 +23,10 @@ const checkStatus = async (response: IFetchResponse): Promise<IFetchResponse> =>
 
 export default async function fetchApi<Body>(
   url: string,
-  headers: ICustomHeaders,
+  headers: TCustomHeaders,
   method?: string,
   body?: any,
-  statusChecker: (resp: Response) => Promise<IFetchResponse<Body>> = checkStatus,
+  statusChecker: (resp: Response) => Promise<TFetchResponse<Body>> = checkStatus,
 ): Promise<Body> {
   const userData = await fetch(`${url}`, {
     method: method || 'GET',

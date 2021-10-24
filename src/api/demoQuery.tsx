@@ -4,33 +4,25 @@ import getBasicHeaders from 'utils/getBasicHeaders';
 // *********************************************************
 // ********************* API TYPES *************************
 // *********************************************************
-export interface IAdminCredentials {
-  email: string;
-  password: string;
-}
+export type TDemoCredentials = any;
 
-export interface ILoginAdminResponse {
-  token: {
-    accessToken: string;
-    username: string;
-  };
-}
+export type TDemoResponse = any;
 
 // *********************************************************
 // ********************* API ENDPOINTS *********************
 // *********************************************************
-const LOGIN_URL: string = `${process.env.REACT_APP_BASIC_URL}/${process.env.REACT_APP_LOGIN}`;
+const DEMO_URL: string = `${process.env.REACT_APP_BASIC_URL}/${process.env.REACT_APP_DEMO}`;
 
 // *********************************************************
 // ********************* API QUERIES ***********************
 // *********************************************************
 
 /**
- * Login admin with email and password
- * @param studentData
+ * This is demo query
+ * @param demoCredentials
  */
-export const loginAdminQuery = async (studentData: IAdminCredentials): Promise<ILoginAdminResponse> => {
+export const demoQuery = async (demoCredentials: TDemoCredentials): Promise<TDemoResponse> => {
   const headers = getBasicHeaders();
-  const response: ILoginAdminResponse = await fetchApi(LOGIN_URL, headers, 'POST', studentData);
+  const response: TDemoResponse = await fetchApi(DEMO_URL, headers, 'POST', demoCredentials);
   return response;
 };

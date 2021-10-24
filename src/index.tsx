@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
 import makeInspectable from 'mobx-devtools-mst';
 
+import Alerts from 'sections/AlertsSection';
+
 import ThemeProviderWrapper from 'styles/ThemeProviderWrapper';
 
 import { StoreProvider, rootStore } from './rootStore';
@@ -21,6 +23,7 @@ const render = () => {
         <Router>
           <AppRoutes />
         </Router>
+        <Alerts />
       </StoreProvider>
     </ThemeProviderWrapper>,
     document.getElementById('root'),

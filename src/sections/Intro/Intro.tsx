@@ -8,7 +8,7 @@ import { dark } from 'styles/themes';
 
 import { TitleSection, Column, IntroSection } from './Intro.styles';
 
-const Intro: FC<any> = ({ submit }) => (
+const Intro: FC<any> = ({ submit, success }) => (
   <ThemeProvider theme={{ colors: dark }}>
     <IntroSection>
       <Column>
@@ -16,6 +16,7 @@ const Intro: FC<any> = ({ submit }) => (
           We <Highlighted>design</Highlighted> & <Highlighted>develop</Highlighted> robust solutions for your products
         </TitleSection>
         <Button onClick={submit}>MAKE ORDER</Button>
+        <Button onClick={success}>Add Success</Button>
       </Column>
 
       {/* Position relative is fix for absolute positioning of image */}
