@@ -12,11 +12,11 @@ const Message = types.model('Message', {
   text: types.string,
 });
 
-export type TMessage = {} & Instance<typeof Message>;
+export type TMessage = Instance<typeof Message>;
 
-export const UiStore = types
-  .model('UiStore', {
-    loading: types.boolean,
+export const uiStore = types
+  .model('uiStore', {
+    loading:  types.boolean,
     messages: types.array(Message),
   })
   .actions((self) => ({
@@ -39,9 +39,9 @@ export const UiStore = types
     },
   }));
 
-export const UiStoreInitial = {
-  loading: false,
+export const uiStoreInitial = {
+  loading:  false,
   messages: [],
 };
 
-export type TUiStore = {} & Instance<typeof UiStore>;
+export type TUiStore = Instance<typeof uiStore>;

@@ -1,17 +1,17 @@
-import { createContext, useContext } from 'react';
 import { types, Instance } from 'mobx-state-tree';
+import { createContext, useContext } from 'react';
 
-import { UiStore, UiStoreInitial } from 'models/ui';
-import { DemoStore, DemoStoreInitial } from 'models/demo';
+import { demoStore, demoStoreInitial } from 'models/demo';
+import { uiStore, uiStoreInitial } from 'models/ui';
 
 export const rootStore = types
   .model({
-    UiStore,
-    DemoStore,
+    uiStore,
+    demoStore,
   })
   .create({
-    UiStore: UiStoreInitial,
-    DemoStore: DemoStoreInitial,
+    uiStore:   uiStoreInitial,
+    demoStore: demoStoreInitial,
   });
 
 const RootStoreContext = createContext<null | Instance<typeof rootStore>>(null);

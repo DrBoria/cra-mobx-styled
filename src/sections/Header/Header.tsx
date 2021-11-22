@@ -1,5 +1,4 @@
-import React, { FC } from 'react';
-import { ThemeProvider } from 'styled-components';
+import { TDefaultTheme, ThemeProvider } from 'styled-components';
 
 import Button from 'components/Button';
 
@@ -7,16 +6,18 @@ import { dark } from 'styles/themes';
 
 import { HeaderSection } from './Header.styles';
 
-export type THeaderProps = {
-  menu: {
-    id: string;
-    title: string;
-    url: string;
-  }[];
+type TMenu = {
+  id: string;
+  title: string;
+  url: string;
 };
 
-const Header: FC<THeaderProps> = ({ menu }) => (
-  <ThemeProvider theme={{ colors: dark }}>
+export type THeaderProps = {
+  menu: TMenu[];
+};
+
+const Header = ({ menu }: THeaderProps) => (
+  <ThemeProvider theme={{ colors: dark } as TDefaultTheme}>
     <HeaderSection>
       {menu.map((field, index) => (
         <a href={field.url} key={index}>

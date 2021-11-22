@@ -1,0 +1,24 @@
+{
+  "extends": ["./.stylelintrc"],
+  "printWidth": 120,
+  "trailingComma": "es5",
+  "tabWidth": 2,
+  "semi": true,
+  "singleQuote": true,
+  "jsxSingleQuote": true,
+  "bracketSpacing": true,
+  "importOrderSeparation": true,
+  "importOrder": [
+    "<THIRD_PARTY_MODULES>",
+    "^api",
+    "^components",
+    "^models",
+    "^pages",
+    "^sections",
+    "^styles",
+    "^utils",
+    "^assets",
+    "(styles.ts)",
+    "^[./]"
+  ]
+}

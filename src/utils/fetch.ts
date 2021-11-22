@@ -12,7 +12,7 @@ export type TCustomHeaders = {
   token?: string;
 } & Headers;
 
-const checkStatus = async (response: TFetchResponse): Promise<TFetchResponse> => {
+const СheckStatus = async (response: TFetchResponse): Promise<TFetchResponse> => {
   if (response.ok) {
     return response;
   }
@@ -26,12 +26,12 @@ export default async function fetchApi<Body>(
   headers: TCustomHeaders,
   method?: string,
   body?: any,
-  statusChecker: (resp: Response) => Promise<TFetchResponse<Body>> = checkStatus,
+  statusChecker: (resp: Response) => Promise<TFetchResponse<Body>> = СheckStatus
 ): Promise<Body> {
   const userData = await fetch(`${url}`, {
     method: method || 'GET',
     headers,
-    body: JSON.stringify(body),
+    body:   JSON.stringify(body),
   });
   await statusChecker(userData);
   return userData.json();

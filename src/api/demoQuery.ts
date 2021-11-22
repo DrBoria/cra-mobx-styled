@@ -11,7 +11,7 @@ export type TDemoResponse = any;
 // *********************************************************
 // ********************* API ENDPOINTS *********************
 // *********************************************************
-const DEMO_URL: string = `${process.env.REACT_APP_BASIC_URL}/${process.env.REACT_APP_DEMO}`;
+const DemoUrl = `${process.env.REACT_APP_BASIC_URL}/${process.env.REACT_APP_DEMO}`;
 
 // *********************************************************
 // ********************* API QUERIES ***********************
@@ -21,8 +21,8 @@ const DEMO_URL: string = `${process.env.REACT_APP_BASIC_URL}/${process.env.REACT
  * This is demo query
  * @param demoCredentials
  */
-export const demoQuery = async (demoCredentials: TDemoCredentials): Promise<TDemoResponse> => {
+export const fetchDemoQuery = async (demoCredentials: TDemoCredentials): Promise<TDemoResponse> => {
   const headers = getBasicHeaders();
-  const response: TDemoResponse = await fetchApi(DEMO_URL, headers, 'POST', demoCredentials);
+  const response: TDemoResponse = await fetchApi(DemoUrl, headers, 'POST', demoCredentials);
   return response;
 };

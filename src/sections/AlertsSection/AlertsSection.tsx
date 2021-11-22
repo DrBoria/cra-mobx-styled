@@ -1,12 +1,12 @@
-import React, { FC } from 'react';
 import { observer } from 'mobx-react';
-
-import Alerts from 'components/Alerts';
+import { FC } from 'react';
 import { useStore } from 'rootStore';
 
+import Alerts from 'components/Alerts';
+
 const AlertsSection: FC<any> = () => {
-  const { UiStore } = useStore();
-  return <>{UiStore.messages.length && <Alerts messages={UiStore.messages} hideMessage={UiStore.hideMessage} />}</>;
+  const { uiStore } = useStore();
+  return <>{uiStore.messages.length && <Alerts messages={uiStore.messages} hideMessage={uiStore.hideMessage} />}</>;
 };
 
 export default observer(AlertsSection);

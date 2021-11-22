@@ -1,20 +1,21 @@
-import React from 'react';
+import makeInspectable from 'mobx-devtools-mst';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
-import makeInspectable from 'mobx-devtools-mst';
 
 import Alerts from 'sections/AlertsSection';
 
 import ThemeProviderWrapper from 'styles/ThemeProviderWrapper';
 
-import { StoreProvider, rootStore } from './rootStore';
-
 import './index.css';
+import { StoreProvider, rootStore } from './rootStore';
 
 makeInspectable(rootStore);
 
 const render = () => {
-  // eslint-disable-next-line global-require
+  // Fix for hot module replacement working properly
+  /* eslint @typescript-eslint/no-var-requires: "off" */
+  /* eslint @typescript-eslint/naming-convention: "off" */
+  /* eslint unicorn/prefer-module: "off" */
   const AppRoutes = require('routes').default;
 
   ReactDOM.render(
@@ -26,7 +27,7 @@ const render = () => {
         <Alerts />
       </StoreProvider>
     </ThemeProviderWrapper>,
-    document.getElementById('root'),
+    document.querySelector('#root')
   );
 };
 

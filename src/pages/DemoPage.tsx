@@ -1,50 +1,51 @@
-import React, { FC } from 'react';
 import { observer } from 'mobx-react';
+import { FC } from 'react';
 import { useStore } from 'rootStore';
+
+import { TMessageTypes } from 'models/ui';
 
 import Header from 'sections/Header';
 import Intro from 'sections/Intro';
-import { TMessageTypes } from 'models/ui';
 
 const menuFields = [
   {
-    id: '1',
+    id:    '1',
     title: 'title',
-    url: 'url',
+    url:   'url',
   },
   {
-    id: '2',
+    id:    '2',
     title: 'title',
-    url: 'url',
+    url:   'url',
   },
   {
-    id: '3',
+    id:    '3',
     title: 'title',
-    url: 'url',
+    url:   'url',
   },
   {
-    id: '4',
+    id:    '4',
     title: 'title',
-    url: 'url',
+    url:   'url',
   },
 ];
 
 const DemoPage: FC<any> = () => {
-  const { UiStore, DemoStore } = useStore();
+  const { uiStore, demoStore } = useStore();
   return (
     <>
       <Header menu={menuFields} />
       <Intro
-        submit={() => DemoStore.fetchDemoLogin(UiStore, null)}
+        submit={() => demoStore.fetchDemoQueryLogin(uiStore, null)}
         success={() =>
-          UiStore.showHideMessage({
+          uiStore.showHideMessage({
             type: TMessageTypes.success,
             text: 'Success',
           })
         }
       />
 
-      {UiStore.loading && 'loading...'}
+      {uiStore.loading && 'loading...'}
     </>
   );
 };

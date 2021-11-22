@@ -25,8 +25,8 @@
        /utils            functions helpers (fetch, get headers and so on)
        index.tsx         app entry point
        index.css         basic styles of application (html, body)
-       rootStore.ts     store combiner
-       routes.ts           routes of application
+       rootStore.ts      store combiner
+       routes.ts         routes of application
 
 ## HOW TO WRITE CODE
 
