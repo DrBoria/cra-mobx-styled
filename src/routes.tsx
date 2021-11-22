@@ -1,12 +1,11 @@
-import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 
 import DemoPage from 'pages/DemoPage';
 
 export default () => (
-  <Route path="/">
+  <Route path='/'>
     <Switch>
-      <Route exact path="/">
+      <Route exact path='/'>
         <DemoPage />
       </Route>
     </Switch>
